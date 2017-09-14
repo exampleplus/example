@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="result" style="background:orange;border:1px solid red;width:300px;height:200px;"></div> 
+			<form id="formtest" action="" method="post"> 
+				<p><span>输入姓名:</span><input type="text" name="username" id="username" /></p> 
+				<p><span>输入密码:</span><input type="text" name="password" id="password" /></p> 
+			</form> 
+			<button id="button_login">ajax提交</button> 
+			<button id="test_post">post提交</button> 
+			<button id="test_get">get提交</button> 
+		</div>
+		<script>
+			$(function(){
+				$("#button_login").click(function(){
+					login();
+				})
+				
+				function login(){
+					var username=$("#username").val();
+					var password=$("#password").val();
+					$.ajax({
+						type:"post",
+						url:"php/login.php",
+						dataType:"json",
+						data:"username="+username+"password="+password,
+						success:function(res){
+							alert(res.username+'n'+res.password);
+						}
+					})
+				}
+			})
+		</script>
+	</body>
+</html>

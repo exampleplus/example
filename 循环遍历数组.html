@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>循环遍历数组</title>
+		<script src="js/jquery.min.js"></script>
+	</head> 
+	<body>
+		<ul id="box">
+		</ul>
+		<script>
+			var arr=[1,2,3,4,5,6];
+			var list="";
+			for(var i=0;i<arr.length;i++){
+				list+="<li>"+arr[i]+"</li>"
+			}
+			$("#box").html(list)
+		</script>
+	</body>
+</html>

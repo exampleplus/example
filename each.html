@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>each方法</title>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<body>
+		<ul id="show"></ul>
+		<script type="text/javascript">
+			var jsonStr = [
+			{'name':"陈朋超","age":18},
+			{'name':"陈朋超2号","age":19},
+			{'name':"陈朋超3号","age":20},
+			];
+			var list="";
+			$.each(jsonStr,function(index,content){
+				list+="姓名:"+content.name+"年龄："+content.age
+			})
+			$("#show").append('list')
+		</script>
+	</body>
+</html>

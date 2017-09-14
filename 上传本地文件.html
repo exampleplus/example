@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<script src="js/uoloadview.js"></script>
+	</head>
+	<body>
+		<div style="width:500px;margin:0px auto;"><h2>图片上传预览演示</h2>
+			<a href="http://keleyi.com/a/bjac/4g8fo9yu.htm" target="_blank">原文</a>
+			<div>
+				<img id="ImgPr" width="120" height="120" />
+			</div>
+			<input type="file" id="up" />
+		</div>
+		<script>
+			$(function () {
+				$("#up").uploadPreview({ Img: "ImgPr", Width: 120, Height: 120 });
+				});
+		</script>
+	</body>
+</html>

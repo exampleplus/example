@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		 <style>  
+        *{  
+            padding: 0;  
+            margin: 0;  
+        }  
+        ul li{list-style-type: none}  
+        #banner{  
+            width: 800px;  
+            height: 400px;  
+            overflow: hidden;  
+        }  
+        #banner ul{  
+            width: 7680px;  
+            overflow: hidden;  
+        }  
+        #banner ul>li{  
+            width: 800px;  
+            height: 400px;  
+            float: left;  
+        }  
+        img{  
+            max-width: 100%;  
+        }  
+    </style>  
+	</head>
+	<body>
+		<div id="banner">  
+        <ul>  
+            <li><img src="img/bg_01.jpg" alt="" width="1920px" height="400px"/></li>  
+            <li><img src="img/bg_02.jpg" alt="" width="1920px" height="400px"/></li>  
+            <li><img src="img/bg_04.jpg" alt="" width="1920px" height="400px"/></li>  
+            <li><img src="img/bg_03.jpg" alt="" width="1920px" height="400px"/></li>  
+        </ul>  
+    </div>  
+    <input type="button" value="left" class="left"/>  
+    <input type="button" value="right" class="right"/>  
+    <script>  
+        $(function () {  
+            $('.right').click(function () {  
+                $("#banner ul").animate({marginLeft:"-800px"},600, function () {  
+                    $("#banner ul>li").eq(0).appendTo($("#banner ul"));  
+                    $("#banner ul").css('marginLeft','0px');  
+                });  
+            })  
+            $('.left').click(function () {  
+                $("#banner ul").css('marginLeft','-800px');  
+                $("#banner ul>li").eq(3).prependTo($("#banner ul"));  
+                $("#banner ul").animate({marginLeft:"0px"},600);  
+            })  
+        })  
+    </script>  
+	</body>
+</html>

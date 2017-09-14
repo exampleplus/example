@@ -1,0 +1,48 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>Title</title>  
+    <script src="js/jquery.min.js"></script>
+<script>
+    $(function(){
+        var arr = [['苹果','西瓜','菠萝','梨子'],['西红柿','黄瓜'],['电视机','洗衣机','电冰箱'],['手机','相机']];
+        $('#select1').on('change',function(){
+            $('#select2').empty();
+            console.log($(this));
+            var val = parseInt($(this).val());
+            console.log(val);
+            var html = '';
+            for(var i=0;i<arr[val].length;i++){
+                html += '<option name="'+arr[val][i]+'">'+arr[val][i]+'</option>';
+            }
+            $('#select2').html(html);
+        });
+    });
+</script>
+</head>
+<body>
+<div class="div1">jQ下拉分类</div>
+<div class="div">
+    <div class="div2">
+        <p><label for="select1">主选项:</label></p>
+        <select name="select"  id="select1">
+            <option name="水果" value='0' selected="selected" >水果</option>
+            <option name="蔬菜" value='1'>蔬菜</option>
+            <option name="家电" value='2'>家电</option>
+            <option name="数码" value='3'>数码</option>
+        </select>
+    </div>   
+    <div class="div2">
+        <p><label for="select2">子选项:</label></p>
+        <select name="select" id="select2">
+            <option name="苹果" selected="selected">苹果</option>
+            <option name="西瓜">西瓜</option>
+            <option name="菠萝">菠萝</option>
+            <option name="梨子">梨子</option>
+        </select>
+    </div>
+</div>
+</body>  
+</html>  
+

@@ -1,0 +1,48 @@
+<!doctype html>
+ <html>
+ <head>
+ <meta charset="utf-8">
+<title></title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+ <style>
+  *{margin:0;padding:0}
+ #slide{position:absolute;height:100px;width:260px;color:#FA8E93;overflow:hidden;border:1px solid #ccc}
+ #slide p{height:34px;line-height:34px;overflow:hidden}
+#slide span{float:right}
+ </style>
+ </head>
+<body>
+
+<div id="slide">
+   <div id="slide1"> 
+         <p><span>否</span>是否有不良信用记录</p>
+        <p><span>否</span>是否出现过延期还款</p>
+        <p><span>否</span>是否有不良贷款记录</p>
+       <p><span>否</span>是否被计入黑名单</p>
+      
+     </div>
+    <div id="slide2"></div>
+</div>
+
+<script>
+    var speed=4;
+     var slide=document.getElementById("slide");
+     var slide2=document.getElementById("slide2");
+   var slide1=document.getElementById("slide1");
+     slide2.innerHTML=slide1.innerHTML
+    function Marquee(){
+        if(slide2.offsetHeight-slide.scrollTop<=0){
+					slide.scrollLeft -= slide1.offsetWidth
+        }
+         else {
+            slide.scrollTop++;
+       }
+    }
+    var MyMar=setInterval(Marquee,speed)
+    slide.onmouseover=function(){clearInterval(MyMar)}
+    slide.onmouseout=function(){MyMar=setInterval(Marquee,speed)}
+</script>
+
+ </body>
+</html>

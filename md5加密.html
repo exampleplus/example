@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="" method="">  
+			姓名：<input type="text" name="name" id="name" placeholder="姓名">  
+			密码：<input type="password" name="password" id="password" placeholder="密码">  
+			<input  type="hidden" id="PWD">  
+			<input type="submit" id="submit" value="提交">  
+			记住密码：<input type="checkbox" id="checkbox">  
+			<input type="hidden" id="SAVE_PWD">  
+		</form>  
+		<script src="js/jquery.min.js"></script>
+		<script src="http://cdn.bootcss.com/blueimp-md5/1.1.0/js/md5.js"></script>
+		<script>
+			$(function(){  
+			    $("#submit").bind("onclick",function(){  
+			    
+			        md5PWD();  
+			        //提交  
+			        $("#loginForm").submit();  
+			    });  
+			      
+			  
+			    //对密码进行md5加密,赋给hidden  
+			    function md5PWD(){  
+			        if($("#password").val()=="默认密码"){  
+			            return;  
+			        }  
+			        var md5PWD = $("#password").val();  
+			        $("#PWD").val(hex_md5(md5PWD)) ;//不同的md5.js调用的方法可能不同  
+			    }  
+			      
+			});  
+		</script>
+	</body>
+</html>

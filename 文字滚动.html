@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+<meta  charset="utf-8" />
+<title>无缝向上滚动</title>
+<style>
+*{margin:0;padding:0;font-size:12px;}
+li{list-style:none;}
+.box{margin:20px;width:320px;height:195px;border:1px solid #ddd;padding:10px;overflow:hidden;}
+.box ul li{line-height:25px;}
+</style>
+<script src="js/jquery.min.js"></script>
+</head>
+<body>
+<div class="box">
+ <ul>
+ <li>01这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>02这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ <li>这是一个无缝向上滚动的特效，是我第一次写这样的插件</li>
+ </ul>
+</div>
+<script>
+/*
+* scrollTop 0.1
+* Dependence jquery-1.7.1.js
+*/
+;(function($){
+ $.fn.scrollTop = function(options){
+  var defaults = {
+   speed:30
+   }
+  var opts = $.extend(defaults,options);
+  this.each(function(){
+   var $timer;
+   var scroll_top=0;
+   var obj = $(this);
+   var $height = obj.find("ul").height();
+   obj.find("ul").clone().appendTo(obj);
+   obj.hover(function(){
+    clearInterval($timer);
+    },function(){
+     $timer = setInterval(function(){
+      scroll_top++;
+      if(scroll_top > $height){
+       scroll_top = 0;
+      }
+      obj.find("ul").first().css("margin-top",-scroll_top);
+    },opts.speed);
+    }).trigger("mouseleave");
+   })
+  }
+ })(jQuery)
+</script>
+<script>
+$(function(){
+ $(".box").scrollTop({
+  speed:30 //数值越大 速度越慢
+  });
+})
+</script>
+</body>
+</html>
+

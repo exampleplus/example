@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+.container { 
+	width:30%;
+	 margin:0 auto 
+	 } 
+ /*.title { 
+ 	background:#545965;
+ 	color:#fff; 
+ 	padding:15px; 
+ 	float:left;
+ 	position:relative;
+ 	-webkit-border-top-left-radius:5px;
+ 	-webkit-border-bottom-left-radius:5px;
+ 	-moz-border-radius-topleft:5px; 
+ 	-moz-border-radius-bottomleft:5px;
+ 	border-top-left-radius:5px; 
+    border-bottom-left-radius:5px 
+}*/
+.bar-unfill {
+	 height:15px; 
+	 display:block;
+	 background:#fff;
+	 width:100%;
+	 border-radius:8px;
+}
+.bar-fill { 
+	height:15px; 
+	display:block; 
+	background:#45c9a5; 
+	width:0;
+	border-radius:8px;
+  -webkit-transition:width .8s ease-in-out; 
+  -moz-transition:width .8s ease-in-out;
+   transition:width .8s ease-in-out; 
+   -webkit-animation:progressbar 7s infinite; 
+   animation:progressbar 7s forwards;
+   }
+@-webkit-keyframes progressbar { 
+	from { width:0 } 
+	to { width:100% } 
+	} /* Standard syntax */
+ @keyframes progressbar {
+ 	 from { width:0 } 
+ 	 to { width:100% } 
+ 	 }
+
+		</style>
+	</head>
+	<body>
+		<div class="container"> 
+			<!--<div class="title plain">Plain</div> -->
+			<div class="bar"> 
+				<span class="bar-unfill"> 
+					<span class="bar-fill"></span>
+				</span> 
+			</div> 
+		</div>
+	</body>
+</html>

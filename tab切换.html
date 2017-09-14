@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab-JQ</title>
+    <style>
+        * {margin: 0; padding: 0; list-style: none;}
+        #wrap {width: 600px; margin: 100px auto 0; overflow: hidden;}
+        #tit {height: 30px;width: 600px;}
+        #tit span {float: left; height: 30px; line-height: 30px; width: 200px; font-size: 20px; text-align: center; color: #ccc;background: green;}
+        #con li{display: none; height: 200px; width: 600px; background: pink;font-size: 100px;line-height: 200px;text-align: center;}
+        #tit span.select {background: red; color: #ccc;}
+        #con li.show {display: block;}
+    </style>
+    <script src='js/jquery.min.js'></script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="tit">
+            <span class="select">标题1</span>
+            <span>标题2</span>
+            <span>标题3</span>
+        </div>
+        <ul id="con">
+            <li class="show">内容111</li>
+            <li>内容222</li>
+            <li>内容333</li>
+        </ul>
+    </div>
+    <script>
+        $('#tit span').click(function() {
+            var i = $(this).index();//下标第一种写法
+            alert(i);
+            //var i = $('tit').index(this);//下标第二种写法
+            $(this).addClass('select').siblings().removeClass('select');
+            
+            $('#con li').eq(i).show().siblings().hide();
+        });
+    </script>
+</body>
+</html>

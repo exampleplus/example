@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+		<style>
+			ul li{
+				list-style: none;
+			}
+			li{
+				width:200px;
+				height:60px;
+				border:1px solid red;
+				margin-top:20px;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+		</ul>
+		<script>
+			$(function(){
+				setInterval(function(){
+					var $list=$('li').length;
+					for(var i=0;i<$list;i++){
+					$('li').eq(i).fadeIn();
+					$('li').eq(i+1).fadeIn('slow');
+					$('li').eq(i+2).fadeIn(3000);
+				}
+				},500)
+			})
+		</script>
+	</body>
+</html>

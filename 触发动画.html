@@ -1,0 +1,88 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+<meta charset="utf-8">  
+<title>利用jquery制作滚动到指定位置触发动画</title>  
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>  
+<style type="text/css">  
+*{ margin:0px; padding:0px;}  
+.gs{  
+position:relative;  
+top:100px;   
+background-color:#099;   
+left:150px; width:80px;   
+}  
+.xz{  
+animation:roate 2s;  
+animation-fill-mode:forwards;  
+animation-direction:alternate;  
+}  
+  
+@keyframes roate{  
+    from { transform:rotate(0deg);  
+    width:100px;  
+  height:100px; }  
+    to{transform:rotate(360deg);  
+    width:200px;  
+  height:200px;  
+    }}  
+.xs{ width:50px; float: left; height:30px; background-color: #F90; position:fixed; left:700px; top:0px;}  
+</style>  
+</head>  
+  
+<body>  
+<script type="text/javascript">  
+/*var a,b,c;  
+a=$("#dh").offset().top;//元素相对于窗口的距离  
+b=$(window).scrollTop(); //监控窗口已滚动的距离;  
+c=$(document).height();//整个文档的高度  
+d=$(window).height();//浏览器窗口的高度  
+element  标签  
+cssname  动画  
+offset  相对于窗口的距离  
+*/  
+function scrollnumber(element,cssname,offset){  
+    var a,b,c,d;  
+    d=$(element).offset().top;  
+    a=eval(d + offset);  
+    b=$(window).scrollTop();   
+    c=$(window).height();  
+    if(b+c>a){  
+        $((element)).addClass((cssname));  
+    }  
+}  
+  
+function scrollfun(){  
+    scrollnumber("#dh1",'xz',100);  
+    scrollnumber("#dh2",'xz',100);  
+    scrollnumber("#dh3",'xz',100);  
+    scrollnumber("#dh4",'xz',100);  
+}  
+      
+$(document).ready(function(e) {  
+    scrollfun();  
+    $(window).scroll(function(){  
+        scrollfun();  
+    });  
+});  
+</script>  
+  
+<div style="height:auto; background-color:#999; width:500px; margin: 0 auto;">  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh1" class="gs" >触发动画111</div>  
+    </div>  
+    <div style="height: 600px;background-color: cadetblue;" ></div>  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh2" class="gs" >触发动画222</div>  
+    </div>  
+    <div style="height: 600px;background-color: darkseagreen;" ></div>  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh3" class="gs" >触发动画333</div>  
+    </div>  
+    <div style="height: 600px;background-color: cadetblue;" ></div>  
+    <div class="com" style="height: 500px;background-color: darkgray;position: relative;">  
+        <div id="dh4" class="gs" >触发动画444</div>  
+    </div>  
+</div>  
+</body>  
+</html>  

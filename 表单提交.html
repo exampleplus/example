@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<form action="http://www.baidu.com" id="myForm">
+		    <input type="text"/>
+		    <input type="button" value="submitBtn" onclick="submitForm();"/>
+  		</form>
+  		<script>
+  			function validate() {
+			    if (confirm("提交表单?")) {
+			      return true;
+			    } else {
+			      return false;
+			    }
+			   }
+			    
+			   function submitForm() {
+			    if (validate()) {
+			      document.getElementById("myForm").submit();
+			    }
+			   }
+  		</script>
+	</body>
+</html>

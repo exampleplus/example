@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery动画控制</title>
+		<script src="js/jquery.min.js"></script>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			.box {
+				width: 500px;
+				height: 500px;
+				background: yellow;
+				position: relative;
+			}
+			.box1 {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			.box2 {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				display: none;
+			}
+			.box3 {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				display: none;
+			}
+			.box4 {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				display: none;
+			}
+			.box1 img,
+			.box2 img,
+			.box3 img,
+			.box4 img {
+				width: 300px;
+				height: auto;
+			}
+			
+			.list {
+				-webkit-animation: rotate 4s linear infinite;
+			}
+			
+			.list2 {
+				-webkit-animation: swing 4s linear infinite;
+			}
+			.list3 {
+				-webkit-animation: rot 4s linear infinite;
+			}
+			.list4 {
+				-webkit-animation: rotat 4s linear infinite;
+			}
+			
+			@keyframes rotate {
+				0% {
+					-webkit-transform: rotate(0deg);
+					-moz-transform: rotate(0deg);
+					-ms-transform: rotate(0deg);
+					-o-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+					-moz-transform: rotate(360deg);
+					-ms-transform: rotate(360deg);
+					-o-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+			
+			@keyframes swing {
+				20% {
+					-webkit-transform: rotate3d(0, 0, 1, 15deg);
+					transform: rotate3d(0, 0, 1, 15deg);
+				}
+				40% {
+					-webkit-transform: rotate3d(0, 0, 1, -10deg);
+					transform: rotate3d(0, 0, 1, -10deg);
+				}
+				60% {
+					-webkit-transform: rotate3d(0, 0, 1, 5deg);
+					transform: rotate3d(0, 0, 1, 5deg);
+				}
+				80% {
+					-webkit-transform: rotate3d(0, 0, 1, -5deg);
+					transform: rotate3d(0, 0, 1, -5deg);
+				}
+				to {
+					-webkit-transform: rotate3d(0, 0, 1, 0deg);
+					transform: rotate3d(0, 0, 1, 0deg);
+				}
+			}
+			@keyframes rot {
+				0% {
+					-webkit-transform: rotate(0deg);
+					-moz-transform: rotate(0deg);
+					-ms-transform: rotate(0deg);
+					-o-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+					-moz-transform: rotate(360deg);
+					-ms-transform: rotate(360deg);
+					-o-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+			
+			@keyframes rotat {
+				0% {
+					-webkit-transform: rotate(0deg);
+					-moz-transform: rotate(0deg);
+					-ms-transform: rotate(0deg);
+					-o-transform: rotate(0deg);
+					transform: rotate(0deg);
+				}
+				100% {
+					-webkit-transform: rotate(360deg);
+					-moz-transform: rotate(360deg);
+					-ms-transform: rotate(360deg);
+					-o-transform: rotate(360deg);
+					transform: rotate(360deg);
+				}
+			}
+			
+		</style>
+
+	</head>
+
+	<body>
+		<div class="box">
+
+			<div class='box1'>
+				<img src="img/cre_icon3.png" alt="" />
+				<p>我是box1</p>
+			</div>
+			<div class="box2">
+				<img src="img/HBuilder.png" alt="" />
+				<p>我是box2</p>
+			</div>
+			<div class="box3">
+				<img src="img/gif-13-3.png" alt="" />
+				<p>我是box3</p>
+			</div>
+			<div class="box4">
+				<img src="img/gif-13-2.png" alt="" />
+				<p>我是box4</p>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		//当进入页面，然后开始执行第一个动画，两秒后动画执行完毕，隐藏box1，开始执行box2里面的动画，然后执行两秒，在执行box3的动画
+		var ok1 = true;
+		setInterval("condition()", 100); //每隔100s检测一下是否要重新开始执行
+		function condition() {
+			if(ok1) {
+				box1();
+			}
+		}
+		function box1() {
+//			$('.box1').css('display', 'block');
+			console.log($('box').css('display'))
+			$('.box1 img').addClass('list'); //调用类名，执行动画
+			ok1 = false; //将false设置为false;
+			setTimeout('box1del()', 2000); //两秒后，调用函数
+		} //添加执行1；
+		function box1del() {
+			$('.box1 img').removeClass('list'); //去除box1的类名 ，停止动画
+			$('.box1').css('display', 'none'); //让box1隐藏，
+			$('.box2').css('display', 'block'); //box2显示
+			$('.box2 img').addClass('list2'); //添加类名，执行动画
+			setTimeout('box2del()', 2000); //两秒后调用其函数。
+		}
+		function box2del() {
+			$('.box2 img').removeClass('list2');
+			$('.box2').css('display', 'none');
+			ok1 = false; //执行完毕将OK设置为false；
+			$('.box3').css('display', 'block');
+			$('.box3 img').addClass('list3'); //添加类名，执行动画
+			setTimeout('box3del()', 2000); //两秒后调用其函数。
+		}
+		function box3del(){
+			$('.box3 img').removeClass('list3');
+			$('.box3').css('display', 'none');
+			ok1 = false;
+			$('.box4').css('display', 'block');
+			$('.box4 img').addClass('list4'); //添加类名，执行动画
+			setTimeout('box4del()', 2000);
+		}
+		function box4del(){
+			$('.box4 img').removeClass('list4');
+			$('.box4').css('display', 'none');
+			ok1 = true; //执行完毕将OK设置为true；
+		}
+
+		
+		//逻辑： 有一个外层的 div 名字为box 其中box1,box2都相对于box绝对定位到一起， 然后是通过添加删除类名来调用动画的  通过延时执行的计时器setTime来控制2s后执行。 通过setInterval每隔100ms 来检测是否要再次执行，注意这点会有0.1s的延时，因为检测会有一个过程
+	</script>
+
+</html>

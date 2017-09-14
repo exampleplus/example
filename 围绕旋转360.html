@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding: 0;
+			}
+			
+			#container{
+				width:100px;
+				height:100px;
+				border:1px solid red;
+				border-radius: 50%;
+				position: relative;
+			}
+			#roat{
+				width:80px;
+				height:80px;
+				background: #0CF;
+				border-radius: 50%;
+				margin:10px;
+				 animation:rond 3s infinite;
+ 				 -webkit-animation:rond 3s infinite;
+			}
+			#test{
+				width:10px;
+				height:10px;
+				border-radius: 50%;
+				background: #0CF;
+				position: absolute;
+				left:80px;
+				top:50%;
+				margin-top:-5px;
+				
+			}
+			@keyframes rond {
+  0% {transform : rotate(0deg)}
+
+ 50% {transform : rotate(60deg)}
+  100% {transform :  rotate(120deg)}
+  
+}
+
+@-webkit-keyframes rond {
+    0% {transform :  rotate(0deg)}
+ 50% {transform : rotate(60deg)}
+  100% {transform :  rotate(120deg)}
+}
+			
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="roat">
+				<div id='test'></div>
+			</div>
+		</div>
+	</body>
+</html>

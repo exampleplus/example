@@ -1,0 +1,277 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>jQuery点击展开收缩树形菜单</title>  
+    <style type="text/css">  
+    *{margin: 0;padding: 0;box-sizing: border-box;}  
+    body{font-size: 14px;font-family: "宋体","微软雅黑";}  
+    ul,li{list-style: none;}  
+    a:link,a:visited{text-decoration: none;color: #fff;}  
+    .wrap{
+    	width:100%;
+    	padding:30px 20px;
+    	overflow: hidden;
+    	min-width: 1200px;
+    	min-height:560px;
+    }
+    /*左侧导航栏*/
+    .list{width: 208px;float:left;margin-right:20px;}  
+    .list ul li{background-color:#467ca2; border:solid 1px #316a91; border-bottom:0;}  
+    .list ul li a{padding-left: 10px;color: #fff; font-size:12px; display: block; font-weight:bold; height:36px;line-height: 36px;position: relative;  
+    }  
+    .list ul li .inactive{ background:url(img/open_btn.png) no-repeat 184px center;}  
+    .list ul li .inactives{background:url(img/close_btn.png) no-repeat 184px center;}   
+    .list ul li ul{display: none;}  
+    .list ul li ul li { border-left:0; border-right:0; background-color:#6196bb; border-color:#467ca2;}  
+    .list ul li ul li ul{display: none;}  
+    .list ul li ul li a{ padding-left:20px;}  
+    .list ul li ul li ul li { background-color:#d6e6f1; border-color:#6196bb; }  
+    .last{ background-color:#d6e6f1; border-color:#6196bb; }  
+    .list ul li ul li ul li a{ color:#316a91; padding-left:30px;}  
+    /*右侧内容区*/
+   .content{
+   float:left;
+   min-width:900px;
+   min-height:520px;
+   }
+   .content_list_top{
+   order: 1px solid #dadada;
+    border-top: none;
+    background: #fff;
+    overflow: auto;
+   }
+   .content_list{
+   	border-spacing: 0;
+   	border-collapse: collapse;
+    width: 100%;
+    
+   }
+    .content_list tr th {
+    height: 38px;
+    color: #666;
+    font-size: 12px;
+    font-weight: normal;
+    background: url(img/table_th.gif) repeat-x;
+}
+    .content_list tr td {
+    text-align: center;
+    height: 36px;
+    color: #666;
+}
+	.member{
+	color: #ef7231;
+    padding: 0 3px;
+    cursor: pointer;
+	} 
+	.tr_bg{
+	background: #f4f4f4;
+	}
+
+    </style>  
+    <script type="text/javascript" src="js/jquery.min.js"></script>  
+    <script type="text/javascript">  
+    $(document).ready(function() {  
+    	//点击展开   收起
+        $('.inactive').click(function(){  
+            if($(this).siblings('ul').css('display')=='none'){  
+                $(this).addClass('inactives');  
+                $(this).siblings('ul').slideDown(100);  
+            }else{  
+                $(this).removeClass('inactives');  
+                $(this).siblings('ul').slideUp(100);  
+            }  
+        })  
+        //容器宽度随窗口大小改变而改变
+        var  wrapwidth=$(document.body).width(); 
+        $('.wrap').css("width",wrapwidth);
+        $(window).resize(function() { 
+			wrapwidth = $(document.body).width(); 
+			$(".wrap").css("width",wrapwidth); 
+		}); 
+    });  
+    </script>  
+</head>  
+<body>
+<div class="wrap">
+	<!--左侧菜单栏-->
+    <div class="list">  
+        <ul class="yiji">  
+            <li>
+            	<a href="#"  class="inactive active">一级菜单</a>
+            	<ul>  
+                    <li><a href="">综合部</a></li>  
+                    <li><a href="#">大型活动部</a></li>  
+                    <li><a href="#">展览部</a></li>  
+                    <li><a href="#">艺委会工作部</a></li>  
+                    <li><a href="#">信息资源部</a></li>  
+                    <li><a href="#">双年展办公室</a></li>  
+                </ul>  
+            </li>  
+            <li>
+            <a href="#" class="inactive active">中国文联美术艺术中心</a>  
+                <ul>  
+                    <li><a href="#">综合部</a></li>  
+                    <li><a href="#">大型活动部</a></li>  
+                    <li><a href="#">展览部</a></li>  
+                    <li><a href="#">艺委会工作部</a></li>  
+                    <li><a href="#">信息资源部</a></li>  
+                    <li><a href="#">双年展办公室</a></li>  
+                </ul>  
+            </li>  
+            <li><a href="#" class="inactive">二级菜单</a>  
+                <ul style="display: none">  
+                    <li><a href="#" class="inactive active">美协机关</a>  
+                        <ul>  
+                            <li><a href="#">办公室</a></li>  
+                            <li><a href="#">人事处</a></li>  
+                            <li><a href="#">组联部</a></li>  
+                            <li><a href="#">外联部</a></li>  
+                            <li><a href="#">研究部</a></li>  
+                            <li><a href="#">维权办</a></li>  
+                        </ul>  
+                    </li>   
+                    <li>
+                    <a href="#" class="inactive active">中国文联美术艺术中心</a>     
+                        <ul>  
+                            <li><a href="#">综合部</a></li>  
+                            <li><a href="#">大型活动部</a></li>  
+                            <li><a href="#">展览部</a></li>  
+                            <li><a href="#">艺委会工作部</a></li>  
+                            <li><a href="#">信息资源部</a></li>  
+                            <li><a href="#">双年展办公室</a></li>  
+                        </ul>  
+                    </li>  
+                    <li class="last"><a href="#">《美术》杂志社</a></li>  
+                </ul>  
+            </li>  
+  
+            <li>
+            <a href="#" class="inactive">二级菜单</a>  
+                <ul style="display: none">  
+                    <li><a href="#" class="inactive active">美协机关</a>  
+                        <ul>  
+                            <li><a href="#">办公室</a></li>  
+                            <li><a href="#">人事处</a></li>  
+                            <li><a href="#">组联部</a></li>  
+                            <li><a href="#">外联部</a></li>  
+                            <li><a href="#">研究部</a></li>  
+                            <li><a href="#">维权办</a></li>  
+                        </ul>  
+                    </li>  
+                    <li><a href="#" class="inactive active">中国文联美术艺术中心</a>  
+                        <ul>  
+                            <li><a href="#">综合部</a></li>  
+                            <li><a href="#">大型活动部</a></li>  
+                            <li><a href="#">展览部</a></li>  
+                            <li><a href="#">艺委会工作部</a></li>  
+                            <li><a href="#">信息资源部</a></li>  
+                            <li><a href="#">双年展办公室</a></li>  
+                        </ul>  
+                    </li>  
+                    <li class="last"><a href="#">《美术》杂志社</a></li>  
+                </ul>  
+            </li>  
+        </ul>  
+    </div>  
+    <!--菜单栏   end -->
+    <!--右侧内容-->
+    <div class="content">
+    	<div class="content_list">
+    		<div class="content_list_top">
+    			<table cellspacing="0" cellpadding="0" border="0" class="content_list">
+    				<tr>
+			            <th>序号</th>
+			            <th>借款人</th>
+			            <th>待还账单期数</th>
+			            <th>待还账单金额</th>
+			            <th>本月将到期期数</th>
+			            <th>本月将到期金额</th>
+			            <th>账户可用余额</th>
+			            <th>操作</th>
+            		</tr>
+            		<tr>
+			            <td>1</td>
+			            <td>test1</td>
+			            <td>22</td>
+			            <td>11,381.34</td>
+			            <td>0</td>
+			            <td>0.00</td>
+			            <td>37,998.52</td>
+			            <td>
+			                <span class="member">会员详情</span>
+			                <span class="member">分配</span>
+			            </td>
+					</tr>
+					<tr class="tr_bg">
+			            <td>2</td>
+			            <td>kobe01</td>
+			            <td>39</td>
+			            <td>24,038.35</td>
+			            <td>0</td>
+			            <td>0.00</td>
+			            <td>65,954.00</td>
+			            <td>
+			                <span class="member">会员详情</span>
+			                <span class="member">分配</span>
+			            </td>
+					</tr>
+					<tr>
+			            <td>3</td>
+			            <td>test3</td>
+			            <td>26</td>
+			            <td>13,381.34</td>
+			            <td>0</td>
+			            <td>0.00</td>
+			            <td>38,998.52</td>
+			            <td>
+			                <span class="member">会员详情</span>
+			                <span class="member">分配</span>
+			            </td>
+					</tr>
+					<tr class="tr_bg">
+			            <td>4</td>
+			            <td>kobe02</td>
+			            <td>39</td>
+			            <td>24,038.36</td>
+			            <td>0</td>
+			            <td>0.00</td>
+			            <td>66,954.00</td>
+			            <td>
+			                <span class="member">会员详情</span>
+			                <span class="member">分配</span>
+			            </td>
+					</tr>
+					<tr>
+			            <td>5</td>
+			            <td>test4</td>
+			            <td>28</td>
+			            <td>19,381.34</td>
+			            <td>0</td>
+			            <td>0.00</td>
+			            <td>31,998.52</td>
+			            <td>
+			                <span class="member">会员详情</span>
+			                <span class="member">分配</span>
+			            </td>
+					</tr>
+					<tr class="tr_bg">
+			            <td>6</td>
+			            <td>kobe07</td>
+			            <td>39</td>
+			            <td>22,038.36</td>
+			            <td>0</td>
+			            <td>0.00</td>
+			            <td>23,954.00</td>
+			            <td>
+			                <span class="member">会员详情</span>
+			                <span class="member">分配</span>
+			            </td>
+					</tr>
+    			</table>
+    		</div>
+    	</div>
+    </div>
+</div>
+</body>  
+</html>  

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	   <script src="js/echarts.min.js"></script>
+		<script src="js/china.js"></script>
+	</head>
+	<body>
+		 <div class="echarts" id="main" style="height: 1000px;width:1000px;"></div>
+		 <script>
+		 	
+		 	var myChart = echarts.init(document.getElementById('main'));
+		 	//数据
+		 		var mydata = [
+					{name: '海门', value: [121.15, 31.89, 90]},
+				  	{name: '鄂尔多斯', value: [109.781327, 39.608266, 120]},
+				  	{name: '招远', value: [120.38, 37.35, 142]},
+				    {name: '舟山', value: [122.207216, 29.985295, 123]},
+				]
+		 	var option={
+		 		backgroundColor:'green', //图表背景色
+		 		title:{
+		 			show:true,
+		 			text:'天气变化',
+		 			textAlign:'center',
+		 			left:'50%',
+		 			textStyle:{
+		 				color:'#fff',
+		 				fontSize:'20px',
+		 				
+		 			}
+		 		},
+		 		geo:{
+		 			map:"china",
+		 			itemStyle:{  //定义样式
+		 				normal:{     //普通状态下的样式
+		 					areaColor: '#323c48',
+                			borderColor: '#111'
+		 				},
+		 				emphasis:{   //高亮状态下的样式
+		 					areaColor: '#000',
+		 				}
+		 			}
+		 		},
+				//添加散点图
+		 		series:[{   //
+		 			type:'scatter',   //series的类型为scatter散点图
+		 			name:'销量',
+		 			coordinateSystem:'geo',// series坐标系类型
+		 			data:mydata,
+		 		}],
+		 		visualMap:{
+		 			type: 'continuous', // 连续型
+					min: 0,       		// 值域最小值，必须参数
+					max: 200,			// 值域最大值，必须参数
+					calculable: true,	// 是否启用值域漫游
+					inRange: {
+			             	color: ['#50a3ba','#eac736','#d94e5d']
+			                             // 指定数值从低到高时的颜色变化
+			          },
+					textStyle: {
+						color: '#fff'	// 值域控件的文本颜色
+					},
+		 		}
+		 	}
+            myChart.setOption(option);
+		 </script>
+	</body>
+</html>

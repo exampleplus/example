@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+</head>
+
+<body>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				overflow-y: auto;
+			}
+			ul{
+				margin-top: 20px;
+				border-top: 1px solid #666;
+			}
+			h1{
+				width: 500px;
+				margin: 0 auto;
+				color: deeppink;
+				height: 100px;
+				line-height: 100px;
+			}
+			li{
+				list-style: none;
+				padding: 15px 0px 15px 60px;
+				border-bottom:1px solid #ccc;
+				font-size: 0px;
+				line-height: 30px;
+				/*height: 60px;*/
+			}
+			input[type=button],li strong,li em,li span,li div{
+				height: 30px;
+				font-size: 20px;
+				line-height: 30px;
+				text-align: center;
+			}
+			input[type=button],li strong
+			{
+				width: 60px;
+			}
+			li span,li em{
+				width: 80px;
+				background: pink;
+			}
+			li div{
+				width: 100px;
+			}
+			li strong,li span,li em,li div{
+				display: inline-block;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var oUl=document.getElementById('list');
+				var aLi=oUl.getElementsByTagName('li');
+				for(var i=0;i<aLi.length;i++){
+					fn1(aLi[i]);
+				}
+				function fn1(aLi){
+					var aBtn=aLi.getElementsByTagName('input');
+					var aStrong=aLi.getElementsByTagName('strong')[0];
+					var aEm=aLi.getElementsByTagName('em')[0];
+					var aSpan=aLi.getElementsByTagName('span')[0];
+					var num=Number(aStrong.innerHTML); //aStrong.innerHTML='0'
+					var price=parseFloat(aEm.innerHTML);//aEm.innerHTML='12.9元'
+					aBtn[0].onclick=function(){
+						if(num>0)
+						{
+						num--;
+						aStrong.innerHTML=num;
+						aSpan.innerHTML=(num*price).toFixed(1)+'元'
+						}
+					}
+					aBtn[1].onclick=function(){
+						num++;
+						aStrong.innerHTML=num;
+						aSpan.innerHTML=(num*price).toFixed(1)+'元'
+					}
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<h1>点点看，仿购物车+ -效果</h1>
+		<ul id="list">
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				<div class="s1">单价:</div><em>12.9元</em>
+				<div class="s1">共计：</div><span>0</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				<div class="s1">单价:</div><em>45.7元</em>
+				<div class="s1">共计：</div><span>0</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				<div class="s1">单价:</div><em>67.5元</em>
+				<div class="s1">共计：</div><span>0</span>
+			</li>
+			
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				<div class="s1">单价:</div><em>14.7元</em>
+				<div class="s1">共计：</div><span>0</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				<div class="s1">单价:</div><em>45.6元</em>
+				<div class="s1">共计：</div><span>0</span>
+			</li>
+			<li>
+				<input type="button" value="-" />
+				<strong>0</strong>
+				<input type="button" value="+" />
+				<div class="s1">单价:</div><em>32.4元</em>
+				<div class="s1">共计：</div><span>0</span>
+			</li>
+		</ul>
+	</body>
+</html>

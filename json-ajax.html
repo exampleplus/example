@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<body>
+		<script>
+			$.ajax({
+			   url: "js/ecshi.json",//json文件位置
+			   type: "GET",//请求方式为get
+			   dataType: "json", //返回数据格式为json
+			   success: function(data) {//请求成功完成后要执行的方法 
+			   	console.log(data.first[0].name)
+			       //each循环 使用$.each方法遍历返回的数据date
+			       $.each(data.second,function(i, item) {
+			            var str = '<div>姓名:' + item.name + '性别：' + item.sex + '</div>';
+			            document.write(str);
+			       })
+			   }
+})
+		</script>
+		
+	</body>
+</html>

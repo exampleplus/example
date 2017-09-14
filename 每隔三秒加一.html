@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<span id="abc">35435</span>
+		<script type="text/javascript">
+			var o = document.getElementById('abc');
+			var num=Math.ceil(Math.random()*100+29); 
+			setInterval('o.innerHTML=parseInt(o.innerHTML)+num;', 3000);
+		</script>
+	</body>
+
+</html>

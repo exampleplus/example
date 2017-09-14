@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="aaa" style="display: none;">
+            这是隐藏内容
+        </div>
+        <button id="but">点击显示</button>
+        <script type="text/javascript">
+            $('#but').click(function(){
+                    $("#aaa").css('display','block');
+                     
+                    setTimeout(function(){
+                        $("#aaa").css('display','none');
+                    },2000);
+            })
+        </script>
+    </body>
+</html>

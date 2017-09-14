@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+    <title>JavaScript表格拖动排序</title>
+  
+    
+</head>
+<body>
+<div style=" margin:100px;">
+	<table  border="0" cellspacing="0" cellpadding="0" class="table_list" id="table">
+        <thead>
+            <tr class="newhead">
+                <th class="newhead-id no-sort">ID</th>
+                <th class="newhead-title">合作方名称</th>
+                <th class="newhead-money">借贷金额</th>
+                <th class="newhead-rate">借贷利率</th>
+                <th class="operation no-sort">操作</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <!--<table id="table" width="600" border="0">
+
+            <tr id="row_1"  style="width:600px; height:20px; background-color:Olive;">
+                <td style="">1</td>
+                <td>parentElement</td>
+                <td>moveRow 1</td>
+                <td>parentElement</td>
+            </tr>
+            <tr id="row_2"  style=" width:600px;height:20px; background-color:Green;">
+                <td style=" ">2</td>
+                <td>parentElement</td>
+                <td>moveRow 2</td>
+                <td>parentElement</td>
+            </tr>
+            <tr id="row_3"  style="width:600px; height:20px; background-color:Gray;">
+                <td style=" ">3</td>
+                <td>parentElement</td>
+                <td>moveRow 3</td>
+                <td>parentElement</td>
+            </tr>
+            <tr id="row_4"  style=" width:600px; height:20px;background-color:Red;">
+                <td style=" ">4</td>
+                <td>parentElement</td>
+                <td>moveRow 4</td>
+                <td>parentElement</td>
+            </tr>
+            <tr id="row_5"  style="width:600px;  height:20px;background-color:#ccc;">
+                <td style="">5</td>
+                <td>parentElement</td>
+                <td>moveRow 5</td>
+                <td>parentElement</td>
+            </tr>
+
+    </table>-->
+     <p class="submit"><input type="button" id="sub" value="提交"></p>
+    </div>
+      <script src="js/jquery.min.js" ></script>
+    <script src="js/jquery.tablednd.js"></script>
+    <script>
+    $("#sub").click(function(){
+    	 $.ajax({
+    			url:"js/getPartnerList.json",
+    			type:"get",
+    			dataType:"json",
+    			async:false,
+    			success:function(res){
+            		var getPartnerList=res.getPartnerList;
+            		var tbody=$("<tbody id='news-content' class='news-content'></tobdy>");
+            		$(getPartnerList).each(function(index){
+            			var val=getPartnerList[index];
+            			var tr=$("<tr></tr>");
+            			tr.append('<td>' + val.pid + '</td>' 
+            			+ '<td>' + val.pname + '</td>'
+            			+'<td>' + val.lend_money + '</td>' 
+            			+'<td>' + val.lend_rate + '</td>'
+            			+'<td>'
+            			+'<a href="javascript:;" class="delete">删除</a>'
+            			+'<a href="javascript:;" class="modify">编辑</a>'
+            			+'<a href="javascript:;" class="delete">查看</a>'
+            			+'</td>')
+            		   tbody.append(tr);
+            		 
+            		}) //each
+            		$('#table tbody').replaceWith(tbody);
+            		 $("#table").tableDnD({
+                //当拖动排序完成后
+                onDrop: function() {
+                    //获取id为table的元素
+//                  var table = document.getElementById("table");
+//                  //获取table元素所包含的tr元素集合
+//                  var tr = table.getElementsByTagName("tr");
+//                  //遍历所有的tr
+//                  for (var i = 0; i < tr.length; i++) {
+//                      //获取拖动排序结束后新表格中，row id的结果
+//                      var rowid = tr[i].getAttribute("id");
+////                      alert("排序完成后表格的第 " + (i+1) + " 行id为 : " + rowid);
+//                  }
+                }
+            });
+            		 //本地存储
+            	} //suc;
+    		})//ajax
+    })
+  
+    </script>
+    <script>
+        $(document).ready(function() {
+
+           
+
+        });
+
+    
+    </script>
+</body>
+</html>

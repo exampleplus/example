@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Html5 postMessage+iframe跨域上传文件</title>
+	<meta charset='UTF-8'>
+	<link rel="stylesheet" href="css/style.css"/>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+</head>
+<body>
+	<form class="form w_12" action="http://192.168.1.143:8080/guanjia_web/picture/upload-image2" method="post" enctype="multipart/form-data"  target="uploadimg_ifm" id="sub">
+		
+		<div class="form-group w_12">
+			<label class="label fl w_12 tl"> 图片上传：</label>
+			<div class="fr w_12">
+				<label class="btn-primary btn w_12" for="img">选择图片</label>
+				<input type="file" id="img" accept="image/*" style="display:none" class="w_8" name="img">
+                <input type="hidden" class="imgurl" value="">
+                <div id="uploader-demo">
+                    <!--用来存放item-->
+                    <div id="fileList" class="uploader-list"></div>
+                </div>
+			</div>
+		</div>
+	</form>
+    <iframe name="uploadimg_ifm" style="display:none;"></iframe>
+    <script src="js/jqthumb.min.js"></script>
+	<script type="text/javascript">
+        var origin = "http://192.168.1.143:8080";
+        var host = "http://192.168.1.143:8080/guanjia_web/picture/upload-image2/";
+		$("#img").change(function(){
+            var file = this.files[0]; //选择上传的文件
+            var r = new FileReader();
+            r.readAsDataURL(file); //Base64
+            $(r).load(function(){
+                 var $li = $(
+                    '<div class="file-item thumbnail">' +
+                        '<img src="'+ this.result +'" alt="" />' +
+                        '<div class="info">' + file.name + '</div>' +
+                    '</div>'
+                    );
+                $('#fileList').html( $li );
+                $('#fileList img').jqthumb();
+                //立即上传图片
+                $(".form").attr("action",host+"servlet/FileUploadServlet").submit();
+            });
+        });
+        window.addEventListener("message", function( event ) {
+            if(event.origin != origin){
+                return false;
+            }
+            var data = event.data;
+            if (data.result == "success") {
+                $(".imgurl").val(data.url);
+                $('<div class="success">上传成功</div>').appendTo( "#fileList .file-item" );
+            }else if (data.result == "failed") {
+                $('<div class="error">上传失败</div>').appendTo( "#fileList .file-item" );
+            }
+        }, false);
+	</script>
+</body>
+</html>

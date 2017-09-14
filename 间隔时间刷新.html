@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			window.setInterval("connection();",20*60*1000); //定时发送ajax请求，防止Session过期
+				 function connection(){ 
+				     var link = "${ctx}/ajaxConnection/ajaxAction.json?rd=" + new Date().valueOf();//加随机参数防止缓存  
+				     $.ajax({
+				      url:link,
+				      type:"POST",
+				      dataType:"json",
+				      context:this,
+				      success : function(data) {
+				      },
+				      error:function(data){
+				       alert("error");
+				      }
+     });
+    }
+		</script>
+		<!--定时向服务端发送请求  这里是默认1秒-->
+		<script type="text/javascript">
+		        var getting = {
+		        url:'server.php',
+		        dataType:'json',
+		        success:function(res) {
+		         console.log(res);
+				}
+			};
+				//关键在这里，Ajax定时访问服务端，不断获取数据 ，这里是1秒请求一次。
+				window.setInterval(function(){$.ajax(getting)},1000);
+		</script>
+
+	</body>
+</html>

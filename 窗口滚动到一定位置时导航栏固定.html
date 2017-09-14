@@ -1,0 +1,203 @@
+<!DOCTYPE html >
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+
+<title>无标题文档</title>
+
+<style>
+
+body,p,div,ul,li{margin:0px;padding:0px;}
+
+p{text-align:center;}
+
+.nav{border:1px solid green;position:relative;height:30px;}
+
+.nav ul{list-style-type:none;height:30px;background:#333;}
+
+.nav ul li{float:left;width:100px;text-align:center;height:30px;line-height:30px;}
+
+.nav ul li a:link{color:white;text-decoration:none;}
+
+.nav ul li a{display:block;}
+
+.nav ul li a:hover{background:#f60;}
+
+.show{background:#f60;}
+
+.fixednav{position:fixed;top:0px;left:0px;width:100%;}
+
+.nav ul li>ul li{background:blue;}
+
+</style>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script>
+
+ $(function(){
+
+var nav=$(".nav"); //得到导航对象
+
+var win=$(window); //得到窗口对象
+
+var sc=$(document);//得到document文档对象。
+
+win.scroll(function(){
+
+  if(sc.scrollTop()>=60){
+
+    nav.addClass("fixednav"); 
+
+   $(".navTmp").fadeIn(); 
+
+  }else{
+
+   nav.removeClass("fixednav");
+
+   $(".navTmp").fadeOut();
+
+  }
+
+})  
+
+      //鼠标经过li对象时，查找li下的ul.
+
+ $("ul li").hover(function(){
+
+$(this).find("ul").show();
+
+ },function(){
+
+$(this).find("ul").hide();
+
+ })
+
+ })
+
+</script>
+
+</head>
+
+<body>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<div class="navTmp" style="display:none;height:30px;"></div>
+
+<div class="nav">
+
+  <ul>
+
+    <li class="show"><a href="#">首页</a></li>
+
+    <li><a href="#">随笔</a>
+
+<ul style="display:none;">
+
+<li><a href="#">人生感悟</a></li>
+
+    <li><a href="#">成功励志</a></li>
+
+    <li><a href="#">生活锁事</a></li>
+
+    </ul>
+
+</li>
+
+    <li><a href="#">素材</a></li>
+
+    <li><a href="#">编程</a></li>
+
+  </ul>
+
+</div>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+<p>我爱学习</p>
+
+</body>
+
+</html>

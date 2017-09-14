@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		
+	   <script src="js/echarts.min.js"></script>
+		
+	</head>
+	<body>
+		 <div class="echarts" id="main" style="height: 400px;width:400px;"></div>
+		 <script>
+		 	var mychart=echarts.init(document.getElementById('main'));
+// 指定图表的配置项和数据
+        var option = {
+    backgroundColor: '#394056',
+    title: {
+        text: '请求数',
+        textStyle: {
+            fontWeight: 'normal',
+            fontSize: 16,
+            color: '#F1F1F3'
+        },
+        left: '6%'
+    },
+    tooltip: {   //提示框组件  
+    	show:true,  //是否显示悬浮框
+        trigger: 'axis', //axis--->坐标轴触发，主要在柱状图，折线图等会使用类目轴的图表中使用。  item-->数据项图形触发，主要在散点图，饼图等无类目轴的图表中使用。
+        axisPointer: {  //坐标轴指示器配置项
+        	type:"line",  //指示器类型    默认为line  shadow-->阴影指示器  cross---》十字准星指示器 
+            lineStyle: {
+                color: '#57617B'
+            }
+        }
+    },
+    legend: {   //图例组件    图例组件展现了不同系列的标记(symbol)，颜色和名字。可以通过点击图例控制哪些系列不显示
+        icon: 'rect',
+        itemWidth: 14,  //图例标记的图形宽度。
+        itemHeight: 5,
+        itemGap: 13,
+        data: ['移动', '电信', '联通'],
+        right: '20%',    //图例组件离容器右侧的距离。
+        textStyle: {
+            fontSize: 12,
+            color: '#F1F1F3'
+        }
+    },
+    grid: {   //直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。可以在网格上绘制折线图，柱状图，散点图（气泡图）。
+        left: '10%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true,  //grid 区域是否包含坐标轴的刻度标签。
+    },
+    xAxis: [{   //X轴
+        type: 'category',  //'category' 类目轴，适用于离散的类目数据，为该类型时必须通过 data 设置类目数据。
+        boundaryGap: false, //类目轴中 boundaryGap 可以配置为 true 和 false。默认为 true，这时候刻度只是作为分隔线，标签和数据点都会在两个刻度之间的带(band)中间。
+        axisLine: {   //坐标轴轴线相关设置。
+        	show:true,  // 是否显示坐标轴轴线。
+            lineStyle: {
+                color: '#57617B'
+            }
+        },
+        data: ['13:00', '13:05', '13:10', '13:15', '13:20', '13:25', '13:30', '13:35', '13:40', '13:45', '13:50', '13:55']
+    }],
+    yAxis: [{
+        type: 'value',
+        name: '单位（%）',
+        axisTick: {
+            show: false
+        },
+        axisLine: {
+            lineStyle: {
+                color: '#57617B'
+            }
+        },
+        axisLabel: {
+            margin: 10,
+            textStyle: {
+                fontSize: 14
+            }
+        },
+        splitLine: {
+            lineStyle: {
+                color: '#57617B'
+            }
+        }
+    }],
+    series: [{
+        name: '移动',
+        type: 'line',
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 5,
+        showSymbol: false,
+        lineStyle: {
+            normal: {
+                width: 1
+            }
+        },
+        areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(137, 189, 27, 0.3)'
+                }, {
+                    offset: 0.8,
+                    color: 'rgba(137, 189, 27, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: 'rgb(137,189,27)',
+                borderColor: 'rgba(137,189,2,0.27)',
+                borderWidth: 12
+
+            }
+        },
+        data: [220, 182, 191, 134, 150, 120, 110, 125, 145, 122, 165, 122]
+    }, {
+        name: '电信',
+        type: 'line',
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 5,
+        showSymbol: false,
+        lineStyle: {
+            normal: {
+                width: 1
+            }
+        },
+        areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(0, 136, 212, 0.3)'
+                }, {
+                    offset: 0.8,
+                    color: 'rgba(0, 136, 212, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+            }
+        },
+        itemStyle: {
+            normal: {
+                color: 'rgb(0,136,212)',
+                borderColor: 'rgba(0,136,212,0.2)',
+                borderWidth: 12
+
+            }
+        },
+        data: [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150]
+    }, {
+        name: '联通',
+        type: 'line',
+        smooth: true,
+        symbol: 'circle',
+        symbolSize: 5,
+        showSymbol: false,
+        lineStyle: {
+            normal: {
+                width: 1
+            }
+        },
+        areaStyle: {
+            normal: {
+                color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                    offset: 0,
+                    color: 'rgba(219, 50, 51, 0.3)'
+                }, {
+                    offset: 0.8,
+                    color: 'rgba(219, 50, 51, 0)'
+                }], false),
+                shadowColor: 'rgba(0, 0, 0, 0.1)',
+                shadowBlur: 10
+            }
+        },
+        itemStyle: {
+            normal: {
+
+                color: 'rgb(219,50,51)',
+                borderColor: 'rgba(219,50,51,0.2)',
+                borderWidth: 12
+            }
+        },
+        data: [220, 182, 125, 145, 122, 191, 134, 150, 120, 110, 165, 122]
+    }, ]
+};
+                    
+
+        // 使用刚指定的配置项和数据显示图表。
+        mychart.setOption(option);
+
+		 </script>
+	</body>
+</html>

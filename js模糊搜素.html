@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title></title>
+  <script src="js/jquery.min.js"></script>
+ </head>
+ <body>       
+   <input type="text"><br>    
+   <div>div1</div>
+   <div>div2</div>
+   <div>div3</div>
+   <div>div4</div>
+   <div>div5-hide</div>
+   <div>div6-hide</div>
+   <div>div7-hide</div>
+   <div>div8-hide</div>
+   <div>div9-hide</div>
+   <div>div10-hide</div>
+</body>
+<script>
+    $('input').keyup(function(){
+        var value = $(this).val();
+        // $('div').each(function(){
+        //     if($(this).html().indexOf(value) != -1)
+        //         $(this).show();
+        //     else
+        //         $(this).hide();
+        // });
+        $(this).parent().append($('div').sort(function(a,b){
+                return $(a).html().indexOf(value) < $(b).html().indexOf(value);
+        }));
+    });
+</script>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>根据不同的值改变每一行的颜色</title>
+		<script src="js/jquery.min.js"></script>
+		<style type="text/css">
+			table{
+				width:100%;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" cellpadding="0" id="table">
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>3</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>4</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>5</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>6</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>7</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>8</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>1</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+			</tr>
+		</table>
+		<script>
+			$(function(){
+				var td=$("#table tr>td:nth-child(2)");
+				td.each(function(){
+//					console.log($(this).html())
+					var html=$(this).html();
+//					console.log(html)
+					if($(this).html()==2){
+						$(this).parent().css("background-color",'red')
+					}
+					else if($(this).html()==1){
+						$(this).parent().css("background-color",'white')
+						
+					}
+					else if($(this).html()==3){
+						$(this).parent().css("background-color",'green')
+						
+					}
+					else if($(this).html()==4){
+						$(this).parent().css("background-color",'blue')
+					}
+					else if($(this).html()==5){
+						$(this).parent().css("background-color",'#f0f')
+					}
+					else if($(this).html()==6){
+						$(this).parent().css("background-color",'yellow')
+					}
+					else if($(this).html()==7){
+						$(this).parent().css("background-color",'orange')
+					}else if($(this).html()==8){
+						$(this).parent().css("background-color",'pink')
+					}
+				})
+			})
+		</script>
+	</body>
+</html>

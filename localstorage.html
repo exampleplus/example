@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0">
+    <title>FileReader</title>
+</head>
+<body>
+    <div id="file-div">
+        <input type="file" name="inputfile" accept="text/plain, text/css, text/html, text/javascript, text/markdown" />
+        <textarea name="filereader" placeholder="请选择txt、js、css或html文件，文件内容会被自动读取"></textarea>
+        <button type="button" name="storebutton">本地存储</button>
+        <button type="button" name="clearbutton">清除存储</button>
+    </div>
+    <script>
+        window.onload = function(){
+            var text = document.getElementsByName('filereader')[0],//输入内容
+                inputFile = document.getElementsByName('inputfile')[0],
+                storeButton = document.getElementsByName('storebutton')[0],//保存按钮
+                clearButton = document.getElementsByName('clearbutton')[0];//清除按钮
+            // 检测localStorage中是否已有缓存
+            if(window.localStorage.getItem('text')) {
+                alert('检测到本地存储的文件，已为您自动恢复');
+                text.value = window.localStorage.getItem('text');
+            }
+
+             //上传文件
+//          inputFile.onchange = function(){
+//              console.log(this.files);
+//              var reader = new FileReader();
+//              reader.readAsText(this.files[0], 'UTF-8');
+//              reader.onload = function (e) {
+//                  // urlData就是对应的文件内容
+//                  var urlData = this.result;
+//                  text.value = urlData;
+//              };
+//          };
+             // 存储文件
+            storeButton.onclick = function(){
+                window.localStorage.setItem('text', text.value);
+                alert('保存成功');
+            };
+
+             // 清除存储
+            clearButton.onclick = function(){
+                window.localStorage.removeItem('text');
+                alert('清除成功');
+            };
+        };
+    </script>
+</body>
+</html>

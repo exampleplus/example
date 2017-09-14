@@ -1,0 +1,9 @@
+{
+"getPartnerList":[
+{"pid":1,"pname":"零用宝","lend_time":"3分钟","lend_money":1500,"lend_rate":"2.05%"},
+{"pid":2,"pname":"和信贷","lend_time":"5分钟","lend_money":2500,"lend_rate":"1.05%"},
+{"pid":3,"pname":"360借款","lend_time":"10分钟","lend_money":3500,"lend_rate":"2.05%"},
+{"pid":4,"pname":"人人贷","lend_time":"15分钟","lend_money":2000,"lend_rate":"3.05%"},
+{"pid":5,"pname":"宜人贷","lend_time":"2分钟","lend_money":1000,"lend_rate":"2%"}
+]
+}

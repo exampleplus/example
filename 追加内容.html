@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<body>
+		<div id="div1" style="height:300px;width:500px;border:1px solid black;background-color:yellow;">
+			This is some text in the div.
+			<p>This is a paragraph in the div.</p>
+			<p>This is another paragraph in the div.</p>
+		</div>
+<br>
+<button id="button2">添加 div 元素</button>
+<script>
+	$("#button2").click(function(){
+//  $("#div1").empty();//每次点击，请div内容清空，但是不删除当前div节点
+    for(var i=0 ;i<2;i++){
+      var u = $("#div1").append("<ul>");//外层循环添加ul到div内，且赋予了一个变量
+       for(var j=0;j<3;j++){         
+             u.append("<li><input type='checkbox' name = 'checkbox' value='1'/>"+i+","+j+"</li>");//内层循环追加li
+       }   
+      $("#div1").append("</ul>");        //外层循环添加ul结束标志到div内
+ }
+  })
+</script>
+	</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			body{
+				margin:0;
+				padding:0;
+				
+			}
+			li{
+				list-style: none;
+			}
+			.rating{
+				width:130px;
+				height:26px;
+				margin:100px auto;
+			}
+			.rating li{
+				float:left;
+				width:26px;
+				height:26px;
+				background: url(img/star.png) no-repeat;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="rating" id="rating">
+			<li class="rating_item" title="很不好"></li>
+			<li class="rating_item" title="不好"></li>
+			<li class="rating_item" title="一般"></li>
+			<li class="rating_item" title="好"></li>
+			<li class="rating_item" title="很好"></li>
+		</ul>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			var num=0;  //默认点亮几颗星星
+			var $item=$('.rating').find('.rating_item'); //获取每个星星
+			var $rating=$('.rating');
+			//点亮
+			var lightOn=function(num){  //点亮几颗星星  只需要传一个参数进去
+					$('.rating').find('.rating_item').each(function(index){    //找到ul下面的每颗星星，并且循环遍历他们
+					if(index<num){   //如果index小于num，点亮num数量的星星，
+						$(this).css('background-position','0 -26px')
+					}else{  //其他的星星熄灭
+						$(this).css('background-position','0 0')
+					}
+				})
+			}
+			//初始化点亮几颗星星
+			lightOn(num);
+			//给每个星星添加事件
+			$item.on('mouseover',function(){
+				lightOn($(this).index()+1)
+			}).on('click',function(){
+				num=$(this).index()+1;
+			})
+			//给父容器添加mouseout事件
+			$rating.on('mouseout',function(){
+				lightOn(num);
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			  *{margin:0;padding:0;}  
+        table{border-collapse:collapse;margin:0 auto;}  
+        tbody tr{cursor:pointer;}  
+        th,td{width:200px;height:30px;border:1px solid #000;}  
+        td{text-align:center;}  
+		</style>
+	</head>
+	<body>
+		 <table id="table">  
+        <thead>  
+            <tr>  
+                <th>排名</th>  
+                <th>姓名</th>  
+                <th onclick="paixu(2)">语文</th>  
+                <th onclick="paixu(3)">数学</th>  
+                <th onclick="paixu(4)">外语</th>  
+                <th>总和</th>  
+            </tr>  
+        </thead>  
+        <tbody>  
+            <tr>  
+                <td></td>  
+                <td>李二狗</td>  
+                <td>76</td>  
+                <td>80</td>  
+                <td>87</td>  
+                <td></td>  
+            </tr>  
+            <tr>  
+                <td></td>  
+                <td>陈莲莲</td>  
+                <td>98</td>  
+                <td>43</td>  
+                <td>78</td>  
+                <td></td>  
+            </tr>  
+             <tr>  
+                <td></td>  
+                <td>Alien</td>  
+                <td>90</td>  
+                <td>53</td>  
+                <td>86</td>  
+                <td></td>  
+            </tr>  
+            <tr>  
+                <td></td>  
+                <td>陈晓瑞</td>  
+                <td>80</td>  
+                <td>43</td>  
+                <td>87</td>  
+                <td></td>  
+            </tr>  
+            <tr>  
+                <td></td>  
+                <td>高健</td>  
+                <td>43</td>  
+                <td>87</td>  
+                <td>98</td>  
+                <td></td>  
+            </tr>  
+            <tr>  
+                <td></td>  
+                <td>张媛媛</td>  
+                <td>60</td>  
+                <td>54</td>  
+                <td>84</td>  
+                <td></td>  
+            </tr>  
+              <tr>  
+                <td></td>  
+                <td>郑媛媛</td>  
+                <td>34</td>  
+                <td>34</td>  
+                <td>67</td>  
+                <td></td>  
+            </tr>  
+            <tr>  
+                <td></td>  
+                <td>秦优</td>  
+                <td>54</td>  
+                <td>87</td>  
+                <td>87</td>  
+                <td></td>  
+            </tr>  
+            <tr>  
+                <td></td>  
+                <td>陈书贞</td>  
+                <td>65</td>  
+                <td>87</td>  
+                <td>67</td>  
+                <td></td>  
+            </tr>  
+            <tr>  
+                <td></td>  
+                <td>陈杲</td>  
+                <td>100</td>  
+                <td>100</td>  
+                <td>100</td>  
+                <td></td>  
+            </tr>  
+        </tbody>  
+		</table>
+		<script type="text/javascript">
+			 // 1.获取所有的tr  
+    var oTr = document.querySelectorAll("tbody tr");  
+    function paixu (idx) {  
+        for (var i = 0; i < oTr.length; i++) {  
+            for (var j = 0; j < oTr.length-1-i; j++) {  //每次一次都会比出最大的值，放到最后，然后第二次数组长度减去1，再循环比一次  
+                if( Number(oTr[j].querySelectorAll("td")[idx].innerHTML)< Number(oTr[j+1].querySelectorAll("td")[idx].innerHTML)){  
+                    var t = oTr[j+1].innerHTML;  
+                    oTr[j+1].innerHTML = oTr[j].innerHTML;  
+                    oTr[j].innerHTML = t;  
+                }  
+            }         
+        }  
+    }  
+		</script>
+	</body>
+</html>

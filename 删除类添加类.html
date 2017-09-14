@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>易巴巴交易平台</title>
+		<meta charset="utf-8" />
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+				font-size: 12px;
+				line-height: 22px;
+				background: #fff;
+			}
+			
+			.clearfix:after {
+				content: ' ';
+				display: block;
+				clear: both;
+				height: 0;
+				font-size: 0;
+				visibility: hidden;
+			}
+			
+			.clearfix {
+				zoom: 1;
+			}
+			
+			.wrap {
+				width: 960px;
+				margin: 0 auto;
+			}
+			
+			ul,
+			li {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul {
+				list-style: none;
+				background: url(images/lj.gif);
+			}
+			
+			ul li {
+				float: left;
+				font-size: 14px;
+				line-height: 39px;
+				background: url(images/ceshi.gif) left center no-repeat;
+				position: relative;
+			}
+			
+			ul li.last {
+				float: right;
+			}
+			
+			ul li a {
+				display: block;
+				text-decoration: none;
+				width: 80px;
+				padding: 0 10px;
+			}
+			
+			ul li.last a {
+				background: url(images/ceshi.gif) right center no-repeat;
+			}
+			
+			#content {
+				border: 1px solid #a7d7f9;
+			}
+			
+			.line {
+				width: 99px;
+				background: #fff;
+				height: 1px;
+				overflow: hidden;
+				display: none;
+				position: absolute;
+				left: 1px;
+			}
+			
+			ul li.last .line {
+				width: 98px;
+			}
+			
+			ul li.center a {
+				background: url(images/ceshi.gif) right center no-repeat;
+			}
+			
+			#content_2,
+			#content_3,
+			#content_4 {
+				display: none;
+			}
+			
+			#header ul li.current .line {
+				display: block;
+			}
+			
+			#header ul li.current {
+				background-color: #fff;
+			}
+		</style>
+		<script type="text/javascript"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+			<script type="text/javascript">
+				$(function() {    
+					var lis = $('#header ul li');    
+					 lis.click(function() 
+					{ $('#header ul li').removeClass('current');      
+					  $(this).addClass('current');        
+					 $('#content').children().css('display', 'none');       
+					  $('#content_' + (parseInt($(this).index()) + 1)).css('display', 'block');     });
+				});
+		</script>
+	</head>
+
+	<body>
+		<div id="container"  class="wrap">
+
+			<div id="header">
+
+				<ul class="clearfix">
+
+					<li class="current">
+						<a href="#">中国</a>
+
+							<div class="line"></div>
+								</li>
+
+								<li>
+									<a href="#">中国生活</a>
+
+										<div class="line"></div>
+								</li>
+
+								<li>
+									<a href="#">中国</a>
+
+										<div class="line"></div>
+								</li>
+
+								<li class="center">
+									<a href="#">中国</a>
+
+										<div class="line"></div>
+											</li>
+
+											<li class="last">
+												<a href="#">中国</a>
+
+													<div class="line"></div>
+														</li>
+														</ul>
+														</div>
+
+														<div id="content">
+
+															<div id="content_1">fdfdf</div>
+
+																<div id="content_2">fff</div>
+
+																	<div id="content_3">ggggggggg</div>
+
+																		<div id="content_4">hhhh</div>
+																			</div>
+																			</div>
+
+	</body>
+
+</html>

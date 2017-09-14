@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{ padding:0px; margin:0px;list-style:none;}
+            .banner { width:500px; height:300px; margin:100px auto; border:1px solid #808080; position:relative; overflow:hidden;}
+            .banner .img{width:5000px; position:absolute; left:0px;top:0px;}
+            .banner .img img{width:500px; height:300px;}
+            .banner .img li{float:left;}
+            .banner .num { position:absolute; width:100%; bottom:10px; left:0px; text-align:center; font-size:0px;}
+            .banner .num li { width:10px; height:10px; background-color:#888; border-radius:50%;display:inline-block; margin:0px 3px; cursor:pointer;}
+            .banner .num li.on {background-color: #ff6a00;}
+            .banner .btn {width: 30px;height: 50px;background-color: #808080;opacity: 0.5; filter:alpha(opacity:0.5); position:absolute;top:50%; margin-top:-25px;
+                    cursor:pointer;
+                    text-align:center;
+                    line-height:50px;
+                    font-size:40px;
+                    color:#fff;
+                    font-family:"宋体";
+                    display:none;
+                }
+                .banner .btn_l { left:0px;}
+                .banner .btn_r { right:0px;}
+                .banner:hover .btn { display:block;}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+            <ul class="img">
+                <li><img src="img/bg_01.jpg" alt=""/></li>
+                <li><img src="img/bg_02.jpg" alt="" /></li>
+                <li><img src="img/bg_03.jpg" alt="" /></li>
+                <li><img src="img/bg_04.jpg" alt="" /></li>
+            </ul>
+            <ul class="num">
+                
+            </ul>
+            <div class="btn btn_l">&lt;</div>
+            <div class="btn btn_r">&gt;</div>
+            <script src="js/jquery.min.js"></script>
+            <script>
+            	 $(document).ready(function () {
+
+                var i = 0;
+
+                var clone = $(".banner .img li").first().clone();//克隆第一张图片
+                $(".banner .img").append(clone);//复制到列表最后
+                var size = $(".banner .img li").size();
+               
+
+                for (var j = 0; j < size-1; j++) {
+                    $(".banner .num").append("<li></li>");
+                }
+
+                $(".banner .num li").first().addClass("on");
+
+                /*自动轮播*/
+
+                var t = setInterval(function () { i++; move();},2000);
+
+                /*鼠标悬停事件*/
+
+                $(".banner").hover(function () {
+                    clearInterval(t);//鼠标悬停时清除定时器
+                }, function () {
+                    t = setInterval(function () { i++; move(); }, 2000); //鼠标移出时清除定时器
+                });
+
+
+
+
+                /*鼠标滑入原点事件*/
+
+                $(".banner .num li").hover(function () {
+
+                    var index = $(this).index();//获取当前索引值
+                    i = index;
+                    $(".banner .img").stop().animate({ left: -index * 500 }, 500);
+                    $(this).addClass("on").siblings().removeClass("on");
+                });
+
+
+
+                /*向左按钮*/
+                $(".banner .btn_l").click(function () {
+                    i++;
+                    move();
+                })
+
+                
+                /*向右按钮*/
+                $(".banner .btn_r").click(function () {
+                    i--;
+                    move();
+                })
+
+                /*移动事件*/
+                function move() {
+                    if (i == size) {
+                        $(".banner .img").css({ left: 0 });
+                        i = 1;
+                    }
+                    if (i == -1) {
+                        $(".banner .img").css({ left: -(size - 1) * 500 });
+                        i = size - 2;
+                    }
+                    $(".banner .img").stop().animate({ left: -i * 500 }, 500);
+
+                    if (i == size - 1) {
+                        $(".banner .num li").eq(0).addClass("on").siblings().removeClass("on");
+                    } else {
+                        $(".banner .num li").eq(i).addClass("on").siblings().removeClass("on");
+                    }
+                }
+            });
+            </script>
+  </div>
+	</body>
+</html>

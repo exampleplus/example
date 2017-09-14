@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<script>
+(function(){
+        // 每过半小时 数值加 1
+        var num = 1026; // 初始值为 1
+        var startTime = new Date(2015,08,10,00,00,00).getTime() / 1000; 
+        var currentTime = new Date().getTime() / 1000; 
+        var passNum = (currentTime - startTime) / 10; 
+        passNum = Math.floor(passNum); // 四舍转化为整数
+        num += passNum;
+        alert("当前数值为：" + num);
+})()
+</script>
+<body >
+<span class=""></span>
+</body>
+</html>

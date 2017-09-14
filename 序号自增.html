@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery.min.js"></script>
+	</head>
+	<body>
+		<table style="width:200px;height:200px;" border=1>
+		   <tr id="1">
+				<td>1</td>
+				<td>1</td>
+				<td><input type="button" name="btn" value="删除" onclick="del(this)"/></td>
+				
+		    </tr>
+		    <tr id="2">
+				<td>2</td>
+				<td>1</td>
+				<td><input type="button" name="btn" value="删除" onclick="del(this)"/></td>
+		    </tr>
+		 </table>
+		 <input type="button" value="增加行" onclick="add()">
+		 <script>
+		 	function add(){
+		 		var id = jQuery("table").find("tr").length +1 ;
+				var trHTML = "<tr id='"+id+"'><td>"+id+"</td><td>1</td><td><input type='button' name='btn'  value='删除' onclick='del(this)'/></td></tr>";
+				$("table").append(trHTML);
+		 	}
+		 	function del(oop){
+		 		$(oop).parent().parent().remove()
+		 	}
+		 </script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.pic{
+				width:600px;
+				overflow: hidden;
+			} 
+			.pic li{
+				list-style: none;
+				float: left;
+			}
+			.pic li img{
+				width:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="pic">
+			<ul style="overflow: hidden;">
+				<li><img src="img/1.jpg"/></li>
+				<li><img src="img/2.jpg"/></li>
+				<li><img src="img/3.jpg"/></li>
+				<li><img src="img/4.jpg"/></li>
+				<li><img src="img/5.jpg"/></li>
+				<li><img src="img/bg_01.jpg"/></li>
+			</ul>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script>
+			$(document).ready(function() {
+            var timer = null;
+            var pic = $(".pic");
+            var oUl = pic.children("ul");
+            var aImg = pic.find("img");
+            var imgWidth = parseFloat(pic.css("width"));
+           oUl.css("width", imgWidth * aImg.length + 'px');
+            var i = 0;
+            timer = setInterval(function() {
+                oUl.animate({
+                    "left": "-" + imgWidth + 'px'
+                }, 1000, function(){
+                    oUl.children("li:first").insertAfter(oUl.children("li:last"));
+                    oUl.css("left", 0);
+                });
+            }, 2000);
+        });
+		</script>
+	</body>
+</html>

@@ -1,0 +1,120 @@
+
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>K线图</title>
+	</head>
+	<body>
+		<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+		<script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+		<script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+		<script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {  
+				Highcharts.setOptions({
+		            lang: {
+		               　		printChart:"打印图表",
+		                downloadJPEG: "下载JPEG 图片" , 
+		                downloadPDF: "下载PDF文档"  ,
+		                downloadPNG: "下载PNG 图片"  ,
+		                downloadSVG: "下载SVG 矢量图" , 
+		                exportButtonTitle: "导出图片" 
+		            }
+		        });
+			   	var chart = {
+			      	zoomType: 'x'
+			   	}; 
+			   	var title = {
+			      	text: '上市至今数据折线图'   
+			   	};
+			   	var subtitle = {
+			      	text: document.ontouchstart === undefined ?'鼠标拖动可以进行缩放' : '手势操作进行缩放'
+			   	};
+			   	var xAxis = {
+			      	type: 'datetime',
+	                dateTimeLabelFormats: {
+	                    millisecond: '%H:%M:%S.%L',
+	                    second: '%H:%M:%S',
+	                    minute: '%H:%M',
+	                    hour: '%H:%M',
+	                    day: '%m-%d',
+	                    week: '%m-%d',
+	                    month: '%Y-%m',
+	                    year: '%Y'
+	                }
+			   	};
+			   	var yAxis = {
+			      	title: {
+			         	text: '市值'
+			      }
+			   	};
+			   	var credits = {  
+					enabled: false  
+				};			   
+				var legend = {
+			      	enabled: false 
+			   	};
+			   	var plotOptions = {
+			      	area: {
+			         	fillColor: {
+				            linearGradient: { x1: 0, y1: 0, x2: 0, y2: 1},
+				            stops: [
+				               [0, Highcharts.getOptions().colors[0]],
+				               [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+				            ]
+				        },
+			         	marker: {
+			            	radius: 2
+			         	},
+			         	lineWidth: 1,
+			         	states: {
+			            	hover: {
+			               		lineWidth: 1
+			            	}
+			         	},
+			         	threshold: null
+			      	}
+			   	};
+			   	var tootip = {headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+					            pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+					            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
+					            footerFormat: '</table>',
+					            shared: true,
+					            useHTML: true}
+			   	var series= [{
+			      type: 'area',
+			      name: '股指',
+			      pointInterval: 24 * 3600 * 1000,
+			      pointStart: null,
+			      data: []
+			     },{
+			      type: 'area',
+			      name: '股指1',
+			      pointInterval: 24 * 3600 * 1000,
+			      pointStart: null,
+			      data: []
+			      }
+			   ];
+			   var json = {};
+			   json.chart = chart;
+			   json.title = title;
+			   json.subtitle = subtitle;
+			   json.legend = legend;
+			   json.xAxis = xAxis;
+			   json.yAxis = yAxis;  
+			   json.series = series;
+			   json.credits = credits;
+			   json.plotOptions = plotOptions;
+			   json.tooltip = tootip;
+			   $.getJSON("js/data2.json",function(data){
+					series[0].data = data.data;
+					series[0].pointStart = eval(data.datatime);
+					series[1].pointStart = eval(data.datatime);
+					$('#container').highcharts(json);
+				})
+			  
+			});
+		</script>
+	</body>
+</html>
