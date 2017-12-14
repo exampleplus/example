@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset=UTF-8 />
+		<title>无标题文档</title>
+		<style>
+			p.p_num {
+				width: 78px;
+				height: 24px;
+				border-top: solid 1px #d0d0d0;
+				position: relative;
+				border-bottom: solid 1px #d0d0d0;
+				margin-top: -3px;
+			}
+			
+			span.sy_minus,
+			span.sy_plus {
+				width: 15px;
+				height: 24px;
+				line-height: 24px;
+				text-align: center;
+				display: block;
+				position: absolute;
+				top: 0px;
+				font-size: 14px;
+				border: solid 1px #d0d0d0;
+				background: #ebebeb;
+				cursor: pointer;
+				border-top: none;
+				border-bottom: none;
+			}
+			
+			span.sy_minus {
+				left: 0px;
+			}
+			
+			span.sy_plus {
+				right: 0px;
+			}
+			
+			input.sy_num {
+				width: 44px;
+				height: 18px;
+				line-height: 24px;
+				text-align: center;
+				position: absolute;
+				top: 0px;
+				left: 17px;
+			}
+			
+			span.sy_num {
+				padding: 5px 8px;
+				border: solid 1px #d0d0d0;
+				border-left: none;
+				border-right: none;
+				cursor: pointer;
+			}
+		</style>
+		<script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				var pl = $("p:last");
+				var reg = /(.*[\:\：]\s*)([\+\d\.]+)(\s*元)/g;
+				$(".sy_minus").click(function() {
+					var me = $(this),
+						txt = me.next(":text"),
+						pc = me.closest("p");
+					var val = parseFloat(txt.val());
+					val = val < 1 ? 1 : val;
+					txt.val(val - 1);
+					
+					var price = parseFloat(pc.prev("p").text().replace(reg, '$2')) * txt.val();
+					pc.next("p").text(pc.next("p").text().replace(reg, "$1" + price + "$3"));
+					var sum = 0;
+					$(".p_num").next("p").each(function(i, dom) {
+						sum += parseFloat($(this).text().replace(reg, "$2"));
+					});
+					pl.text(pl.text().replace(reg, "$1" + sum + "$3"));
+				});
+
+				$(".sy_plus").click(function() {
+					var me = $(this),
+						txt = me.prev(":text"),
+						pc = me.closest("p");
+
+					var val = parseFloat(txt.val());
+					txt.val(val + 1);
+					var price = parseFloat(pc.prev("p").text().replace(reg, '$2')) * txt.val();
+					pc.next("p").text(pc.next("p").text().replace(reg, "$1" + price + "$3"));
+					var sum = 0;
+					$(".p_num").next("p").each(function(i, dom) {
+						sum += parseFloat($(this).text().replace(reg, "$2"));
+					});
+					pl.text(pl.text().replace(reg, "$1" + sum + "$3"));
+				});
+			})[0].onselectstart = new Function("return false");
+		</script>
+	</head>
+
+	<body>
+		<div class="">
+			<p class="">单价：36</p>
+			<p class="p_num">
+				<span class="sy_minus" id="sy_minus_gid1">-</span>
+				<input class="sy_num" id="sy_num_gid1" readonly="readonly" type="text" name="number1" value="1" />
+				<span class="sy_plus" id="sy_plus_gid1">+</span>
+			</p>
+			<p class="">需支付：36元</p>
+		</div>
+		<div class="">
+			<p class="">单价：58元</p>
+			<p class="p_num">
+				<span class="sy_minus" id="sy_minus_gid2">-</span>
+				<input class="sy_num" id="sy_num_gid2" readonly="readonly" type="text" name="number1" value="1" />
+				<span class="sy_plus" id="sy_plus_gid2">+</span>
+			</p>
+			<p class="">需支付：58元</p>
+		</div>
+		<p class="">总共需要支付：94元</p>
+	</body>
+
+</html>

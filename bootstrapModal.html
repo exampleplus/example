@@ -1,0 +1,69 @@
+
+    <!DOCTYPE html>  
+    <html lang="zh-CN">  
+    <head>  
+        <meta charset="utf-8">  
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">  
+        <meta name="viewport" content="width=device-width, initial-scale=1">  
+        <title>Bootstrap Modal</title>  
+        <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">  
+    </head>  
+    <body>  
+      
+    <div class="panel panel-default">  
+        <div class="panel-heading">好友列表</div>  
+        <div class="panel-body">  
+            <div class="list-group" role="group" aria-label="好友列表">  
+                <button type="button" class="list-group-item" data-toggle="modal" data-target="#exampleModal"  
+                        data-whatever="张三">张三  
+                </button>  
+                <button type="button" class="list-group-item" data-toggle="modal" data-target="#exampleModal"  
+                        data-whatever="李四">李四  
+                </button>  
+                <button type="button" class="list-group-item" data-toggle="modal" data-target="#exampleModal"  
+                        data-whatever="王二">王二  
+                </button>  
+            </div>  
+        </div>  
+    </div>  
+      
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">  
+        <div class="modal-dialog" role="document">  
+            <div class="modal-content">  
+                <div class="modal-header">  
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span  
+                            aria-hidden="true">×</span></button>  
+                    <h4 class="modal-title" id="exampleModalLabel">New message</h4>  
+                </div>  
+                <div class="modal-body">  
+                    <form>  
+                        <div class="form-group">  
+                            <label for="recipient-name" class="control-label">Recipient:</label>  
+                            <input type="text" class="form-control" id="recipient-name">  
+                        </div>  
+                        <div class="form-group">  
+                            <label for="message-text" class="control-label">Message:</label>  
+                            <textarea class="form-control" id="message-text"></textarea>  
+                        </div>  
+                    </form>  
+                </div>  
+                <div class="modal-footer">  
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>  
+                    <button type="button" class="btn btn-primary">Send message</button>  
+                </div>  
+            </div>  
+        </div>  
+    </div>  
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>  
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>  
+    <script>  
+        $('#exampleModal').on('show.bs.modal', function (event) {  
+            var button = $(event.relatedTarget) // 触发事件的按钮  
+            var recipient = button.data('whatever') // 解析出data-whatever内容  
+            var modal = $(this)  
+            modal.find('.modal-title').text('Message To ' + recipient)  
+            modal.find('.modal-body input').val(recipient)  
+        })  
+    </script>  
+    </body>  
+    </html>  
