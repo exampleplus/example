@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>信用报告</title>
+		<style>
+			body { margin: 0;padding:0 ;overflow: hidden;}
+			input { padding: 0; margin: 0; border: 0; }
+			
+			.header{
+				height:0.7rem;
+				line-height:0.7rem;
+				text-align: center;
+				font-size: 0.4rem;
+				border-bottom:0.01rem solid #ccc;
+				position: relative;
+			}
+			.header .back{
+				float:left;
+				display: block;
+				width:15px;
+				height:15px;
+				position: absolute;
+				top:50%;
+				margin-top:-7.5px;
+				margin-left:0.3rem;
+				border-left:2px  solid #666;
+				border-top:2px solid #666;
+				transform: rotate(-45deg);
+			}
+			.super_validate_wrap, .single_validate_wrap {
+				width:100%;
+			    position: relative; /* 设置为相对定位，以便让子元素能绝对定位 */
+			    height: 1.5rem;
+			    border-bottom:0.01rem solid #ccc;
+			    padding-left:0.2rem;
+			    overflow: hidden;
+			}
+			.credit{
+				font-size: 0.3rem;
+			}
+			.credit label {
+			    display: block;
+			    height: 40px;
+			    width: 40px;
+			    line-height: 40px;
+			    font-size: 20px;
+			    cursor: pointer;
+			}
+			.credit input {
+			    z-index: 3;
+			    position: absolute;
+			    top: 0;
+			    bottom: 0;
+			    margin: auto; 
+			    opacity: 0;
+			    display: block;
+			    width: 0.5rem;
+			    height: 0.5rem;
+			    cursor: pointer;
+			}
+			.credit span {
+			    position: absolute;
+			    top: 0;
+			    bottom: 0;
+			    margin: auto;
+			    display: block;
+			    width: 0.5rem;
+			    height: 0.5rem;
+			    border: 1px solid #ccc;
+			    border-radius: 50%;
+			    cursor: pointer;
+			}      
+			.credit a{
+				position: absolute;
+			    top: 0;
+			    bottom: 0;
+			    left: 0.08rem;
+			    margin: auto;
+			    display: block;
+			    width: 0.3rem;
+			    height: 0.3rem;
+			    border: 1px solid #ccc;
+			    border-radius: 50%;
+			    cursor: pointer;
+			}  
+			.credit a.active {
+			    background-color: rgb(254,152,42);            
+			}
+			.fl{
+				float:left;
+			}
+			.fr{
+				float:right;
+			}
+			
+			.super_validate,.single_validate{
+				display: block;
+				position: absolute;
+				top:24%;
+				padding-left:1rem;
+			}
+			.period{
+				display: block;
+				position: absolute;
+				bottom:20%;
+				padding-left:1rem;
+				color:#ccc;
+			}
+			.price_super{
+				position: absolute;
+				display: block;
+				
+				top:24%;
+				right:10%;
+			}
+			.price_origial{
+				position: absolute;
+				display: block;
+				bottom:20%;
+				right:10%;
+				color:#ccc;
+				text-decoration: line-through;
+			}
+			.price_single{
+				position: absolute;
+				top:50%;
+				right:10%;
+				margin-top:-0.2rem;
+				font-size: 0.3rem;
+			}
+			.prompt{
+				padding-left:0.3rem;
+				font-size: 0.3rem;
+			}
+			.identify{
+				color:rgb(254,152,42)
+			}
+			.pay{
+				position: absolute;
+				bottom:0.5rem;
+				width:90%;
+				left:50%;
+				margin-left:-45%;
+				padding:0.3rem;
+				color:#fff;
+				background: rgb(254,152,42);
+				font-size: 0.4rem;
+				border:none;
+				border-radius: 0.1rem;
+			}
+			@media screen and (min-width: 414px) and (max-width: 768px) {
+				.pay{
+						bottom:2.5rem;
+				}
+			}
+			@media screen and (min-width: 768px) and (max-width: 1024px) {
+				.pay{
+						bottom:1.5rem;
+				}
+			}
+		</style>
+		<script>
+				window.onload = function(){
+	   
+			    getRem(720,100)
+			};
+			window.onresize = function(){
+			    getRem(720,100)
+			};
+			function getRem(pwidth,prem){
+			    var html = document.getElementsByTagName("html")[0];
+			    var oWidth = document.body.clientWidth || document.documentElement.clientWidth;
+			    html.style.fontSize = oWidth/pwidth*prem + "px";
+			   }
+		</script>
+	</head>
+	<body>
+		<div class="header">
+			<span class="back"></span>
+			信用报告
+		</div>
+		<form action="">
+		    <div class="credit">
+		    	 <div class="super_validate_wrap">
+	    	 		<input type="radio" name="credit" id="super_validate_radio">
+		            <span>
+		            	<a href="javascript:;"></a>
+		            </span>
+		    	 	
+		    	 	<div>
+		    	 		<b class="super_validate">超级认证20次</b><b class="price_super">118.00元</b>
+		    	 		<b class="period">有效期360天</b><b class="price_origial">198.00元</b>
+		    	 	</div>
+		        </div>
+		        <div class="single_validate_wrap">
+		            <input type="radio" name="credit" id="single_validate_radio">
+		            <span>
+		            	<a href="javascript:;"></a>
+		            </span> 
+		            <div>
+		    	 		<b class="single_validate">单次认证</b>
+		    	 		<b class="period">有效期30天</b>
+		    	 		<b class="price_single">9.90元</b>
+		    	 	</div>
+		        </div>
+		    </div>
+		</form>
+		<p class="prompt">提示：点此了解<span class="identify">信用认证费规则</span></p>
+		<input type="button" value="支付信用认证费9.90元" class="pay"/>
+		<script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.js"></script>
+		<script>
+			$("#super_validate_radio").click( function () {
+			    $(this).siblings("span").find("a").addClass("active");
+			    $(this).parents("div").siblings("div").find("a").removeClass("active");
+			    $(this).attr("checked",true)
+			    $("#single_validate_radio").attr("checked",false);
+			});
+			$("#single_validate_radio").click( function () {
+			     $(this).siblings("span").find("a").addClass("active");
+			    $(this).parents("div").siblings("div").find("a").removeClass("active");
+			    $(this).attr("checked",true);
+			    $("#super_validate_radio").attr("checked",false);
+			});
+		</script>
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta charset="utf-8" />
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.js"></script>
+    <style type="text/css">
+        body {
+            font-size:13px;text-align:center;
+        }
+        div {
+            width:400px;border:1px solid #000000;
+            background-color:#f5e8e8;margin:100px 300px;
+            padding:10px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            function Init(node) {
+                return node.html("<option>---请选择---</option>");
+            }
+　　　　　　　//多维数组做数据来源
+            var db = {
+                腾讯: {
+                    LOL: "德玛,EZ瑞尔,剑圣",
+                    BNS: "气功师,力士,刺客,气宗师",
+                    DNF:"A,B,C,D"
+                },
+                阿里巴巴: {
+                    APPLAY: "AL,EZ瑞尔,剑圣",
+                    HUABEI: "AL,力士,刺客,气宗师",
+                    JIEBEI: "AL,B,C,D"
+                },
+                百度: {
+                    ggs: "BD,EZ瑞尔,剑圣",
+                    BD: "BD,力士,刺客,气宗师",
+                    BDBD: "BD,B,C,D",
+                }
+            };
+　　　　　　　　//初始化select节点
+            $.each(db, function (changShang) {
+                $("#selF").append("<option>" + changShang + "</option>");
+            })
+            //一级变动
+            $("#selF").change(function () {
+                //清空二三级
+                Init($("#selB"));
+                Init($("#selC"));
+                $.each(db,function (cs,pps) {
+                    if ($("#selF option:selected").text() == cs) {
+                        $.each(pps, function (pp, xhs) {
+                            $("#selB").append("<option>" + pp + "</option>");
+                        });
+                        $("#selB").change(function () {
+                            Init($("#selC"));
+                            $.each(pps, function (pp,xhs) {
+                                if ($("#selB option:selected").text()==pp) {
+                                    $.each(xhs.split(','), function () {
+                                        $("#selC").append("<option>" + this + "</option>");
+                                    })
+                                }
+                            })
+                        })
+                    }
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <div class="bg-primary">
+        <hr />
+        企业：<select id="selF">
+               <option>---请选择---</option>    
+        </select>
+        产品：<select id="selB">
+               <option>---请选择---</option>    
+        </select>
+        嗯嗯：<select id="selC">
+               <option>---请选择---</option>    
+        </select>
+        <p id="pid"></p>
+    </div>
+</body>
+</html>

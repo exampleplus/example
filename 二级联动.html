@@ -1,0 +1,119 @@
+ <!DOCTYPE html>
+  <html>
+  <head>
+      <meta charset="utf-8">
+      <title>jQuery 二级联动</title>
+      <style>
+          .city{
+              display: none;;
+          }
+         .city_first {
+             display: inline-block;
+         }
+     </style>
+     <script src="js/jquery.min.js"></script>
+     <script>
+         $(document).ready(function(){
+             $("#province").change(function(){
+                 var index = $(this).get(0).selectedIndex;
+                 console.log($(this).get(0))
+                 $('.city').hide().eq(index).show();
+             });
+         });
+     </script>
+ </head>
+ <body>
+ <select id="province">
+     <option>----请选择机型----</option>
+     <option>iphone6</option>
+     <option>iphone6s</option>
+     <option>iphone6s plus</option>
+     
+     <option>iphone7</option>
+     <option>iphone7s</option>
+     <option>iphone7s plus</option>
+     
+     <option>iphone8</option>
+     <option>iphone8s</option>
+     <option>iphone8s plus</option>
+     
+     <option>iphoneX</option>
+     
+ </select>
+ 
+ <select class="city city_first">
+     <option>--------</option>
+ </select>
+ 
+ <select class="city">
+     <option>1000</option>
+     <option>西城</option>
+     <option>崇文</option>
+     <option>宣武</option>
+     <option>朝阳</option>
+ </select>
+ <select class="city">
+     <option>1100</option>
+     <option>卢湾</option>
+     <option>徐汇</option>
+     <option>长宁</option>
+     <option>静安</option>
+ </select>
+ <select class="city">
+     <option>1200</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+  <select class="city">
+     <option>1300</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+  <select class="city">
+     <option>1400</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+  <select class="city">
+     <option>1500</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+  <select class="city">
+     <option>1600</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+  <select class="city">
+     <option>1700</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+  <select class="city">
+     <option>1800</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+  <select class="city">
+     <option>1900</option>
+    <option>镇江</option>
+     <option>苏州</option>
+     <option>南通</option>
+     <option>扬州</option>
+ </select>
+ </body>
+ </html>

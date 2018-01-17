@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<input type="button" id="btn" value="显示我" />
+		<script type='text/template' id="demo1">
+			 <div class="videojs-hero black-background-color">
+				  <span class="err_message">
+				 		 <p style="text-align:left">抱歉×_×播放出错了</p>
+				 		 <p style="text-align:left">1.请检查您的网络并刷新页面重试 </p>
+				 		 <p style="text-align:left">2.请检查您的PC机是否没有安装Flash，下次记得要安装哦^_^</p>
+				  </span>
+			 </div>
+		</script>
+		<script>
+			function createErrorOverlay(){
+				 var overlay=document.createElement('div');
+				 overlay.className='box';
+				overlay.innerHTML=document.querySelector('#demo1').innerHTML;
+				 document.getElementsByTagName('body')[0].appendChild(overlay);
+				 }
+				document.getElementById('btn').onclick= createErrorOverlay;
+	   </script>
+	</body>
+</html>

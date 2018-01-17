@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="">
+			展示url的参数值
+		</div>
+		<script>
+//			var url=window.location.search;
+			function GetRequest() {  
+				   var url = location.search; //获取url中"?"符后的字串  
+				   var theRequest = new Object();  
+				   if (url.indexOf("?") != -1) {  
+					console.log("url............."+url)
+				      var str = url.substr(1);  
+				   	console.log("str.........."+str)
+				      
+				      strs = str.split("&"); 
+				   		console.log("strs........."+strs)
+				      
+				      for(var i = 0; i < strs.length; i ++) {  
+				         theRequest[strs[i].split("=")[0]]=unescape(strs[i].split("=")[1]);  
+				      }  
+				   }  
+				   return theRequest;  
+				}  
+				
+				var req=GetRequest();
+				console.log(req)
+				param1=req.param1;
+				param2=req.param2;
+				param3=req.param3;
+				
+				console.log("param1:"+param1+".....param2:"+param2);
+				console.log(param1)
+				console.log(param2)
+				console.log(param3)
+				
+				
+		</script>
+	</body>
+</html>
